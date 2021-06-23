@@ -66,8 +66,6 @@ def sultengDistrict(update: Update,context:CallbackContext):
 
 
 def main():
-    PORT = int(os.environ['PORT'])
-
     print("BOT RUNNING...")
     API_KEY = os.environ['API_KEY']
 
@@ -80,7 +78,7 @@ def main():
     dp.add_handler(CommandHandler('kabupaten',sultengDistrict))
     dp.add_handler(CommandHandler('indonesia',indonesiaCovid))
     dp.add_handler(MessageHandler(Filters.text, userKeyword))
-    updater.start_webhook(listen='0.0.0.0', port=int(PORT), url_path = API_KEY)
+    updater.start_webhook(listen='0.0.0.0', port=80, url_path = API_KEY)
     updater.bot.setWebhook('https://covid19-sulteng.herokuapp.com/'+API_KEY)
     updater.idle()
 
