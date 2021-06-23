@@ -80,7 +80,7 @@ def main():
     dp.add_handler(CommandHandler('indonesia',indonesiaCovid))
     dp.add_handler(MessageHandler(Filters.text, userKeyword))
     #updater.start_webhook(listen='0.0.0.0',port=8443, url_path=API_KEY, webhook_url='https://covid19-sulteng.herokuapp.com/'+API_KEY)    
-    updater.start_pooling()
+    updater.start_polling()
     updater.idle()
 
 if __name__ == '__main__':
