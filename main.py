@@ -1,3 +1,4 @@
+#!/path/to/project/venv/bin/python
 import os
 import datetime
 from telegram import Update
