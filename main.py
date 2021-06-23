@@ -66,7 +66,7 @@ def sultengDistrict(update: Update,context:CallbackContext):
 
 
 def main():
-    PORT = int(os.environ.['PORT'])
+    PORT = int(os.environ['PORT'])
 
     print("BOT RUNNING...")
     API_KEY = os.environ['API_KEY']
