@@ -2,17 +2,17 @@
 import os
 import datetime
 from telegram import Update
-from telegram.bot import Bot as bot,
 from telegram.ext import *
 import requests as rq
 
-def startCommand(update: Update, bot: bot):
-    bot.send_message(update.effective_chat.id,'Start Command Executed !!!, BOT Now Running...')
+def startCommand(update: Update):
+    update.message.reply_text('Gunakan tanda slash / Garis Miring ( / ) Untuk mulai command')
     
 def helpCommand(update: Update):
     update.message.reply_text('Pilih Menu pada Tanda slash atau garis miring, kemudian klik, Jika ada Yang Ingin Ditanyakan tantang penggunaan BOT Ini, bisa chat @comradehusni')
 
 def userKeyword(update: Update):
+    update.message.reply_text(update.message.text)
     update.message.reply_text('Tidak dapat mengenali perintah, silahkan pilih menu dibawah')
 
 def sultengCovid(update: Update):
