@@ -1,21 +1,20 @@
 
 import os
 import datetime
-from telegram import Update
-from telegram.bot import Bot
+from telegram import Update, bot
 from telegram.ext import *
 import requests as rq
 
-def startCommand(update: Update, bot: Bot):
+def startCommand(update,bot):
     bot.send_message(update.effective_chat.id,'Start Command Executed !!!, BOT Now Running...')
     
-def helpCommand(update: Update,context:CallbackContext):
+def helpCommand(update: Update):
     update.message.reply_text('Pilih Menu pada Tanda slash atau garis miring, kemudian klik, Jika ada Yang Ingin Ditanyakan tantang penggunaan BOT Ini, bisa chat @comradehusni')
 
-def userKeyword(update: Update,context:CallbackContext):
+def userKeyword(update: Update):
     update.message.reply_text('Tidak dapat mengenali perintah, silahkan pilih menu dibawah')
 
-def sultengCovid(update: Update,context:CallbackContext):
+def sultengCovid(update: Update):
     SULTENG_ENDPOINT = os.environ['SULTENG_ENDPOINT']
     response = rq.get(SULTENG_ENDPOINT)
     jsonParse = response.json()
