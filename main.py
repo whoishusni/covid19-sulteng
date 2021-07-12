@@ -1,13 +1,14 @@
 
 import os
 import datetime
-from telegram import Update
+from telegram import Update, bot
 from telegram.ext import *
 import requests as rq
 
-def startCommand(update: Update,context: CallbackContext):
-    update.message.reply_text('Start Command Executed !!!, BOT Now Running...')
-    update.message.reply_text('Hai, Silahkan Pilih Menu BOT dibawah')
+def startCommand(update: Update):
+    bot.send_message(update.message.chat_id,'Start Command Executed !!!, BOT Now Running...')
+    bot.send_message(update.message.chat_id,'Hai, Silahkan Pilih Menu BOT dibawah')
+    bot.send_message(update.message.chat_id,"using another method")
 
 def helpCommand(update: Update,context:CallbackContext):
     update.message.reply_text('Pilih Menu pada Tanda slash atau garis miring, kemudian klik, Jika ada Yang Ingin Ditanyakan tantang penggunaan BOT Ini, bisa chat @comradehusni')
