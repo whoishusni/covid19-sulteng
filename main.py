@@ -1,11 +1,12 @@
 
 import os
 import datetime
-from telegram import Update, bot
+from telegram import Update
+from telegram.bot import Bot as bot,
 from telegram.ext import *
 import requests as rq
 
-def startCommand(update,bot):
+def startCommand(update: Update):
     bot.send_message(update.effective_chat.id,'Start Command Executed !!!, BOT Now Running...')
     
 def helpCommand(update: Update):
