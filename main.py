@@ -6,7 +6,7 @@ from telegram.bot import Bot as bot,
 from telegram.ext import *
 import requests as rq
 
-def startCommand(update: Update):
+def startCommand(update: Update, bot: bot):
     bot.send_message(update.effective_chat.id,'Start Command Executed !!!, BOT Now Running...')
     
 def helpCommand(update: Update):
