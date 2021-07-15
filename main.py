@@ -8,14 +8,14 @@ import requests as rq
 CHAT_ID = update.message.chat_id
 
 def startCommand(context: CallbackContext):
-    context.bot.send_message(CHAT_ID,'Gunakan tanda slash / Garis Miring ( / ) Untuk mulai command')
+    context.bot.send_message(CHAT_ID,"Gunakan tanda slash / Garis Miring ( / ) Untuk mulai command")
     
 def helpCommand(context: CallbackContext):
-    context.bot.send_message(CHAT_ID,'Pilih Menu pada Tanda slash atau garis miring, kemudian klik')
+    context.bot.send_message(CHAT_ID,"Pilih Menu pada Tanda slash atau garis miring, kemudian klik")
     
 def userKeyword(context: CallbackContext):
     context.bot.send_message(CHAT_ID, update.message.text)
-    context.bot.send_message(CHAT_ID,'Tidak dapat mengenali perintah, silahkan pilih menu dibawah')
+    context.bot.send_message(CHAT_ID,"Tidak dapat mengenali perintah, silahkan pilih menu dibawah")
 
 def sultengCovid(context: CallbackContext):
     SULTENG_ENDPOINT = os.environ['SULTENG_ENDPOINT']
