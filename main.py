@@ -1,23 +1,22 @@
 
 import os
 import datetime
-from telegram import Update as update
+from telegram import Update
 from telegram.ext import *
 import requests as rq
 
-CHAT_ID = update.message.chat_id
 
-def startCommand(chatId: CHAT_ID, context: CallbackContext):
-    context.bot.send_message(chatId,"Gunakan tanda slash / Garis Miring ( / ) Untuk mulai command")
+def startCommand(update: Update, context: CallbackContext):
+    context.bot.send_message(update.message.chat_id,"Gunakan tanda slash / Garis Miring ( / ) Untuk mulai command")
     
-def helpCommand(chatId: CHAT_ID, context: CallbackContext):
-    context.bot.send_message(chatId,"Pilih Menu pada Tanda slash atau garis miring, kemudian klik")
+def helpCommand(update: Update, context: CallbackContext):
+    context.bot.send_message(update.message.chat_id,"Pilih Menu pada Tanda slash atau garis miring, kemudian klik")
     
-def userKeyword(chatId: CHAT_ID, context: CallbackContext):
-    context.bot.send_message(chatId, update.message.text)
-    context.bot.send_message(chatId,"Tidak dapat mengenali perintah, silahkan pilih menu dibawah")
+def userKeyword(update: Update, context: CallbackContext):
+    context.bot.send_message(update.message.chat_id, update.message.text)
+    context.bot.send_message(update.message.chat_id,"Tidak dapat mengenali perintah, silahkan pilih menu dibawah")
 
-def sultengCovid(chatId: CHAT_ID, context: CallbackContext):
+def sultengCovid(update: Update, context: CallbackContext):
     SULTENG_ENDPOINT = os.environ['SULTENG_ENDPOINT']
     response = rq.get(SULTENG_ENDPOINT)
     jsonParse = response.json()
@@ -26,7 +25,7 @@ def sultengCovid(chatId: CHAT_ID, context: CallbackContext):
     meninggal = str(jsonParse['data']['meninggal'])
 
     dateNow = datetime.datetime.now()
-    context.bot.send_message(chatId,f"""
+    context.bot.send_message(update.message.chat_id,f"""
     Total Kumulatif Covid-19 di Sulawesi Tengah
     Positif = {positif} Orang
     Sembuh = {sembuh} Orang
@@ -35,7 +34,7 @@ def sultengCovid(chatId: CHAT_ID, context: CallbackContext):
     Update = {dateNow}
     """)
 
-def indonesiaCovid(chatId: CHAT_ID, context: CallbackContext):
+def indonesiaCovid(update: Update, context: CallbackContext):
     API_INDO = os.environ['API_INDO']
     response = rq.get(API_INDO)
     jsonParse = response.json()
@@ -43,7 +42,7 @@ def indonesiaCovid(chatId: CHAT_ID, context: CallbackContext):
     sembuh = str(jsonParse[0]['sembuh'])
     meninggal = str(jsonParse[0]['meninggal'])
     dateNow = datetime.datetime.now()
-    context.bot.send_message(chatId,f"""
+    context.bot.send_message(update.message.chat_id,f"""
     Total Kumulatif Covid-19 di Indonesia
     Positif = {positif} Orang
     Sembuh = {sembuh} Orang
@@ -52,7 +51,7 @@ def indonesiaCovid(chatId: CHAT_ID, context: CallbackContext):
     Update = {dateNow}
     """)
 
-def sultengDistrict(chatId: CHAT_ID, context:CallbackContext):
+def sultengDistrict(update: Update, context:CallbackContext):
     DISTRICT = os.environ['SULTENG_DISTRICT_ENDPOINT']
     response = rq.get(DISTRICT)
     jsonParse = response.json()
@@ -65,7 +64,7 @@ def sultengDistrict(chatId: CHAT_ID, context:CallbackContext):
         Sembuh = {i['sembuh']} Orang
         Meninggal = {i['meninggal']} Orang
         """
-        context.bot.send_message(chatId,message)
+        context.bot.send_message(update.message.chat_id,message)
 
 
 def main():
