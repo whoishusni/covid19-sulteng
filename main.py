@@ -5,7 +5,7 @@ from telegram import Update as update
 from telegram.ext import *
 import requests as rq
 
-CHAT_ID = update.effective_chat.id
+CHAT_ID = update.message.chat_id
 
 def startCommand(context: CallbackContext):
     context.bot.send_message(CHAT_ID,'Gunakan tanda slash / Garis Miring ( / ) Untuk mulai command')
